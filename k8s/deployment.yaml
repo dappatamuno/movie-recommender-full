@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-recommender
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: recommender
+  template:
+    metadata:
+      labels:
+        app: recommender
+    spec:
+      containers:
+      - name: recommender
+        image: <your-dockerhub-username>/movie-recommender:latest
+        ports:
+        - containerPort: 8000
